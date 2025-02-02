@@ -30,31 +30,14 @@
         <button class="category-nav prev">
             <span class="arrow-left"></span>
         </button>
-        <div class="category-container">
-            <div class="category active">
-                <img src="img/category1.png" alt="Category 1">
-                <span>CATEGORY1</span>
-            </div>
-            <div class="category">
-                <img src="img/category1.png" alt="Category 2">
-                <span>CATEGORY1</span>
-            </div>
-            <div class="category">
-                <img src="img/category1.png" alt="Category 3">
-                <span>CATEGORY1</span>
-            </div>
-            <div class="category">
-                <img src="img/category1.png" alt="Category 4">
-                <span>CATEGORY1</span>
-            </div>
-            <div class="category">
-                <img src="img/category1.png" alt="Category 5">
-                <span>CATEGORY1</span>
-            </div>
-            <div class="category">
-                <img src="img/category1.png" alt="Category 6">
-                <span>CATEGORY1</span>
-            </div>
+        <div class="category-container" id="categoryContainer">
+            <!-- Categories will be dynamically inserted here -->
+            <template id="categoryTemplate">
+                <div class="category">
+                    <img src="" alt="Category">
+                    <span></span>
+                </div>
+            </template>
         </div>
         <button class="category-nav next">
             <span class="arrow-right"></span>
@@ -63,81 +46,35 @@
 
     <section class="filters">
         <div class="filter-container">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Latest</button>
-            <button class="filter-btn">Popular</button>
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="latest">Latest</button>
+            <button class="filter-btn" data-filter="popular">Popular</button>
         </div>
     </section>
 
-    <main class="article-grid">
-        <article class="article-card">
-            <div class="article-image">
-                <img src="img/articles/a1.jpg" alt="Article 1">
-            </div>
-            <div class="article-content">
-                <div class="article-author">
-                    <img src="img/authors/author1.jpg" alt="Author" class="author-avatar">
-                    <div class="author-info">
-                        <span class="author-name">Xiao Meng</span>
-                        <span class="author-profession">Data Scientist</span>
+    <main class="article-grid" id="articleGrid">
+        <!-- Articles will be dynamically inserted here -->
+        <template id="articleTemplate">
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="" alt="Article">
+                </div>
+                <div class="article-content">
+                    <div class="article-author">
+                        <img src="" alt="Author" class="author-avatar">
+                        <div class="author-info">
+                            <span class="author-name"></span>
+                            <span class="author-profession"></span>
+                        </div>
+                    </div>
+                    <time class="publish-date"></time>
+                    <h3 class="article-title"></h3>
+                    <div class="article-tags">
+                        <!-- Tags will be dynamically inserted -->
                     </div>
                 </div>
-                <time class="publish-date">30 Jan 2025</time>
-                <h3 class="article-title">AI is a Mirror: Machine Learning Learns the Human Bias</h3>
-                <div class="article-tags">
-                    <span class="tag tag-1">#Bias</span>
-                    <span class="tag tag-2">#StatisticalBias</span>
-                    <span class="tag tag-3">#DataBias</span>
-                </div>
-            </div>
-        </article>
-        <!-- Duplicate article card 8 more times -->
-        <article class="article-card">
-            <!-- Same content structure -->
-            <div class="article-image">
-                <img src="img/articles/a1.jpg" alt="Article 2">
-            </div>
-            <div class="article-content">
-                <div class="article-author">
-                    <img src="img/authors/author1.jpg" alt="Author" class="author-avatar">
-                    <div class="author-info">
-                        <span class="author-name">Xiao Meng</span>
-                        <span class="author-profession">Data Scientist</span>
-                    </div>
-                </div>
-                <time class="publish-date">30 Jan 2025</time>
-                <h3 class="article-title">AI is a Mirror: Machine Learning Learns the Human Bias</h3>
-                <div class="article-tags">
-                    <span class="tag tag-1">#Bias</span>
-                    <span class="tag tag-2">#StatisticalBias</span>
-                    <span class="tag tag-3">#DataBias</span>
-                </div>
-            </div>
-        </article>
-        <!-- Repeat 7 more times with the same structure -->
-        <article class="article-card">
-            <!-- Same content structure -->
-            <div class="article-image">
-                <img src="img/articles/a1.jpg" alt="Article 3">
-            </div>
-            <div class="article-content">
-                <div class="article-author">
-                    <img src="img/authors/author1.jpg" alt="Author" class="author-avatar">
-                    <div class="author-info">
-                        <span class="author-name">Xiao Meng</span>
-                        <span class="author-profession">Data Scientist</span>
-                    </div>
-                </div>
-                <time class="publish-date">30 Jan 2025</time>
-                <h3 class="article-title">AI is a Mirror: Machine Learning Learns the Human Bias</h3>
-                <div class="article-tags">
-                    <span class="tag tag-1">#Bias</span>
-                    <span class="tag tag-2">#StatisticalBias</span>
-                    <span class="tag tag-3">#DataBias</span>
-                </div>
-            </div>
-        </article>
-        <!-- Continue with 6 more identical cards -->
+            </article>
+        </template>
     </main>
 
     <button class="load-more">Load More</button>
