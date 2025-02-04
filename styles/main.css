@@ -101,7 +101,7 @@ body {
     position: relative;
     width: 100%;
     padding-bottom: 44.2%; 
-    background-image: url('../img/banner.png');
+    background-image: url('static/img/banner.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -113,9 +113,8 @@ body {
 .categories {
     display: flex;
     align-items: center;
-    padding: 0 50px;
+    padding: 0 30px;
     margin-bottom: 50px;
-    gap: 20px;
 }
 
 .category-container {
@@ -126,7 +125,6 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
     padding: 10px;
-    flex: 1;
 }
 
 .category-container::-webkit-scrollbar {
@@ -333,17 +331,20 @@ body {
 /* Load More Button Styles */
 .load-more {
     display: block;
-    margin: 50px auto;
+    margin: 0 auto 50px;
     padding: 15px 40px;
     font-family: 'Anta', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     color: var(--primary-text);
-    background-color: transparent;
-    border: 2px solid transparent;
-    border-image: var(--button-gradient);
-    border-image-slice: 1;
+    background: var(--button-gradient);
+    border: none;
+    border-radius: 25px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
+}
+
+.load-more:hover {
+    transform: scale(1.05);
 }
 
 /* Footer Styles */

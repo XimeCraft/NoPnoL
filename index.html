@@ -30,14 +30,8 @@
         <button class="category-nav prev">
             <span class="arrow-left"></span>
         </button>
-        <div class="category-container" id="categoryContainer">
-            <!-- Categories will be dynamically inserted here -->
-            <template id="categoryTemplate">
-                <div class="category">
-                    <img src="" alt="Category">
-                    <span></span>
-                </div>
-            </template>
+        <div id="categoryContainer" class="category-container">
+            <!-- Categories will be dynamically loaded here -->
         </div>
         <button class="category-nav next">
             <span class="arrow-right"></span>
@@ -52,32 +46,40 @@
         </div>
     </section>
 
-    <main class="article-grid" id="articleGrid">
-        <!-- Articles will be dynamically inserted here -->
-        <template id="articleTemplate">
-            <article class="article-card">
-                <div class="article-image">
-                    <img src="" alt="Article">
-                </div>
-                <div class="article-content">
-                    <div class="article-author">
-                        <img src="" alt="Author" class="author-avatar">
-                        <div class="author-info">
-                            <span class="author-name"></span>
-                            <span class="author-profession"></span>
-                        </div>
-                    </div>
-                    <time class="publish-date"></time>
-                    <h3 class="article-title"></h3>
-                    <div class="article-tags">
-                        <!-- Tags will be dynamically inserted -->
-                    </div>
-                </div>
-            </article>
-        </template>
+    <main id="articleGrid" class="article-grid">
+        <!-- Articles will be dynamically loaded here -->
     </main>
 
     <button class="load-more">Load More</button>
+
+    <!-- Templates -->
+    <template id="categoryTemplate">
+        <div class="category">
+            <img src="" alt="">
+            <span></span>
+        </div>
+    </template>
+
+    <template id="articleTemplate">
+        <article class="article-card">
+            <div class="article-image">
+                <img src="" alt="Article">
+            </div>
+            <div class="article-content">
+                <div class="article-author">
+                    <img src="" alt="Author" class="author-avatar">
+                    <div class="author-info">
+                        <span class="author-name"></span>
+                        <span class="author-profession"></span>
+                    </div>
+                </div>
+                <time class="publish-date"></time>
+                <h3 class="article-title"></h3>
+                <div class="article-tags">
+                </div>
+            </div>
+        </article>
+    </template>
 
     <footer class="footer">
         <p>@2025 XimeCraft</p>
