@@ -221,3 +221,23 @@ local_settings.py
 *.bkp
 *.drawio
 *.drawio.bkp
+
+
+# Frontend additional
+frontend/.vite/
+frontend/dist/
+frontend/.env
+frontend/.env.*
+frontend/stats.html
+frontend/.eslintcache
+frontend/auto-imports.d.ts
+frontend/components.d.ts
+frontend/coverage/
+frontend/cypress/videos/
+frontend/cypress/screenshots/
+frontend/test-results/
+frontend/playwright-report/
+frontend/.nyc_output
+frontend/.DS_Store
+frontend/*.local
+frontend/package-lock.json
