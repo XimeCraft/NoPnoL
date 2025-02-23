@@ -50,26 +50,19 @@ class CategoryList {
     constructor(container) {
         this.container = container;
         this.template = document.getElementById('categoryTemplate');
-        this.selectedCategoryId = null;
     }
 
     async render() {
+        console.log("CategoryList render started");
         try {
             const categories = await API.getCategories();
             this.container.innerHTML = '';
             
-            categories.forEach((category, index) => {
+            categories.forEach((category) => {
                 const clone = this.template.content.cloneNode(true);
                 const div = clone.querySelector('.category');
                 const img = clone.querySelector('img');
                 const span = clone.querySelector('span');
-
-                if (index === 0) {
-                    div.classList.add('active');
-                    this.selectedCategoryId = category.id;
-                }
-                console.log("category.image_url", API.IMAGE_BASE_URL);
-                console.log("category.image_url", category.image_url);
 
                 const imageUrl = API.IMAGE_BASE_URL + category.image_url;
                 img.src = imageUrl;
@@ -92,7 +85,6 @@ class CategoryList {
         // Update selected state
         this.container.querySelectorAll('.category').forEach(cat => cat.classList.remove('active'));
         element.classList.add('active');
-        this.selectedCategoryId = categoryId;
 
         // Reload articles
         await this.loadArticles();
@@ -101,7 +93,7 @@ class CategoryList {
     async loadArticles() {
         try {
             const articleGrid = new ArticleGrid(document.getElementById('articleGrid'));
-            await articleGrid.render('all', 1, this.selectedCategoryId);
+            await articleGrid.render('all', 1, null);
         } catch (error) {
             console.error('Error loading articles:', error);
         }
@@ -172,6 +164,7 @@ class ArticleGrid {
 
 // Initialize components
 document.addEventListener('DOMContentLoaded', async () => {
+
     // Initialize Categories
     const categoryList = new CategoryList(document.getElementById('categoryContainer'));
     await categoryList.render();
