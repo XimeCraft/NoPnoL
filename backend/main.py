@@ -3,16 +3,16 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import os
 
-from .api.endpoints import articles, categories
+from .api import router
 from .database import engine
-from .models.models import Base
+from .models import Base
 
 app = FastAPI(title="NoPnoL API")
 
 # CORS配置
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5500"],  # 前端服务器地址
+    allow_origins=["http://localhost:5500"],  # Frontend server address
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -22,12 +22,14 @@ app.add_middleware(
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 os.makedirs(static_dir, exist_ok=True)
 
+print("Static directory:", os.path.exists(static_dir))  # 确保目录存在
+print("Static directory path:", static_dir)  # 打印目录路径
+
 # mount static files
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 # register routes
-app.include_router(articles.router, prefix="/api", tags=["articles"])
-app.include_router(categories.router, prefix="/api", tags=["categories"])
+app.include_router(router, prefix="/api")
 
 @app.get("/")
 async def root():

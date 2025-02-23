@@ -1,14 +1,18 @@
 // API Service
 class API {
     static BASE_URL = 'http://localhost:8000/api';
+    static IMAGE_BASE_URL = 'http://localhost:8000/';
+
 
     static async getCategories() {
         console.log('Attempting to fetch categories from:', `${this.BASE_URL}/categories`);
         try {
             const response = await fetch(`${this.BASE_URL}/categories`);
             if (!response.ok) throw new Error('Failed to fetch categories');
+
             const data = await response.json();
             console.log('Categories fetched successfully:', data);
+
             return data;
         } catch (error) {
             console.error('Error fetching categories:', error);
@@ -25,11 +29,15 @@ class API {
                 ...(categoryId && { category_id: categoryId.toString() })
             });
             console.log('Making request to:', `${this.BASE_URL}/articles?${params}`);
+
             const response = await fetch(`${this.BASE_URL}/articles?${params}`);
             if (!response.ok) throw new Error('Failed to fetch articles');
+
             const data = await response.json();
             console.log('Articles fetched successfully:', data);
+
             return data;
+
         } catch (error) {
             console.error('Error fetching articles:', error);
             throw error;
@@ -60,8 +68,11 @@ class CategoryList {
                     div.classList.add('active');
                     this.selectedCategoryId = category.id;
                 }
-                
-                img.src = category.image_url;
+                console.log("category.image_url", API.IMAGE_BASE_URL);
+                console.log("category.image_url", category.image_url);
+
+                const imageUrl = API.IMAGE_BASE_URL + category.image_url;
+                img.src = imageUrl;
                 img.alt = category.name;
                 span.textContent = category.name;
 
@@ -70,7 +81,7 @@ class CategoryList {
                 this.container.appendChild(clone);
             });
 
-            // 初始加载文章
+            // Initialize articles
             await this.loadArticles();
         } catch (error) {
             console.error('Error rendering categories:', error);
@@ -78,12 +89,12 @@ class CategoryList {
     }
 
     async handleCategoryClick(element, categoryId) {
-        // 更新选中状态
+        // Update selected state
         this.container.querySelectorAll('.category').forEach(cat => cat.classList.remove('active'));
         element.classList.add('active');
         this.selectedCategoryId = categoryId;
 
-        // 重新加载文章
+        // Reload articles
         await this.loadArticles();
     }
 
@@ -124,10 +135,10 @@ class ArticleGrid {
                 const clone = this.template.content.cloneNode(true);
                 
                 // Set article image
-                clone.querySelector('.article-image img').src = article.image_url;
+                clone.querySelector('.article-image img').src = API.IMAGE_BASE_URL + article.image_url;
                 
                 // Set author info
-                clone.querySelector('.author-avatar').src = article.author.avatar_url;
+                clone.querySelector('.author-avatar').src = API.IMAGE_BASE_URL + article.author.avatar_url;
                 clone.querySelector('.author-name').textContent = article.author.name;
                 clone.querySelector('.author-profession').textContent = article.author.profession;
                 
@@ -144,7 +155,7 @@ class ArticleGrid {
                 this.container.appendChild(clone);
             });
 
-            // 更新加载更多按钮状态
+            // Update load more button state
             const loadMoreBtn = document.querySelector('.load-more');
             if (response.total <= page * response.limit) {
                 loadMoreBtn.style.display = 'none';
@@ -187,7 +198,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Filter Buttons
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const articleGrid = new ArticleGrid(document.getElementById('articleGrid'));
+    const articleGrid = new ArticleGrid(document.getElementById('articleGrid')); 
     
     filterButtons.forEach(button => {
         button.addEventListener('click', async () => {

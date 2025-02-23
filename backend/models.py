@@ -5,7 +5,7 @@ from datetime import datetime
 
 Base = declarative_base()
 
-# 文章-标签关联表
+# article-tag relation table
 article_tags = Table(
     'article_tags',
     Base.metadata,
@@ -64,10 +64,9 @@ class Article(Base):
     
     id = Column(Integer, primary_key=True)
     title = Column(String(50), nullable=False)
-    subtitle = Column(String(100))
     image_url = Column(String(200))
     content = Column(Text)
-    publish_date = Column(DateTime, default=datetime.utcnow)
+    publish_date = Column(DateTime, default=datetime.now)
     author_id = Column(Integer, ForeignKey('authors.id'))
     category_id = Column(Integer, ForeignKey('categories.id'))
     
@@ -78,9 +77,10 @@ class Article(Base):
     def to_dict(self):
         return {
             'id': self.id,
-            'title': self.title,
+            'title': self.title,  
+            'content': self.content,
             'image_url': self.image_url,
-            'publish_date': self.publish_date.strftime('%d %b %Y'),
+            'publish_date': self.publish_date,
             'author': self.author.to_dict() if self.author else None,
             'category': self.category.to_dict() if self.category else None,
             'tags': [tag.name for tag in self.tags]
