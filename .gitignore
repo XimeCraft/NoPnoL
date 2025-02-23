@@ -216,3 +216,8 @@ logs/
 
 # Local development settings
 local_settings.py
+
+# Backup and diagram files
+*.bkp
+*.drawio
+*.drawio.bkp
