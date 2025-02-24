@@ -6,7 +6,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import axios from 'axios'
 
-// 导入字体
+// import fonts
 import '@fontsource/alumni-sans'
 import '@fontsource/anta'
 import '@fontsource/inter'
@@ -50,12 +50,14 @@ const API = {
     }
 };
 
-// 创建 Vue 应用实例
+// Create Vue app
 const app = createApp(App)
 
-// 全局注入 API 服务
+// Global API
 app.config.globalProperties.$api = API
 
+// Use Pinia
 app.use(createPinia())
 
+// Mount app
 app.mount('#app') 
