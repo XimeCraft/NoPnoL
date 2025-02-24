@@ -6,8 +6,6 @@ NoPnoL aims to address the inherent bias in machine learning models that often e
 
 Although finding the perfect balance between these two goals remains challenging, I believe it's crucial to at least make visible what we might be sacrificing in pursuit of model accuracy.
 
-The name "NoPnoL" stands for "No Prejudice, No Label," reflecting our mission to showcase a world free from preconceptions and unfair categorizations.
-
 ## Tech Stack
 
 ### Backend
