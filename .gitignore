@@ -241,6 +241,7 @@ frontend/.nyc_output
 frontend/.DS_Store
 frontend/*.local
 frontend/package-lock.json
+frontend/node_modules/
 
 # Node.js specific
 npm-debug.log*

@@ -1,23 +1,25 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
+import { ref } from 'vue'
+import Header from './components/Header.vue'
+import Banner from './components/Banner.vue'
+import CategoryList from './components/CategoryList.vue'
+import ArticleGrid from './components/ArticleGrid.vue'
+
+const selectedCategoryId = ref(null)
+
+const handleCategorySelected = (categoryId) => {
+  selectedCategoryId.value = categoryId
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <Header />
+  <Banner />
+  <CategoryList @category-selected="handleCategorySelected" />
+  <ArticleGrid :categoryId="selectedCategoryId" />
+  <footer class="footer">
+    <p>@2025 XimeCraft</p>
+  </footer>
 </template>
 
 <style scoped>
@@ -81,5 +83,47 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
+}
+
+:root {
+  /* General Colors */
+  --bg-color: #000101;
+  --highlight-color: #87af20;
+  --primary-text: #ffffff;
+  --searchbar-color: #312f2f;
+  --selected-filter: #01e6b3;
+
+  /* Category Colors */
+  --category-bg-selected: #87af20;
+  --category-bg-unselected: #312F2F;
+  --category-arrow-bg: #312F2F;
+
+  /* Tag Colors */
+  --tag-color-1: #FF1CF7;
+  --tag-color-2: #796EFF;
+  --tag-color-3: #40BBFD;
+
+  /* Load More Button Gradient */
+  --button-gradient: linear-gradient(90deg, #FF38FF, #5C24FF, #2F85D9, #01E6B3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--primary-text);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+.footer {
+  text-align: center;
+  padding: 30px 0;
+  font-family: 'Anta', sans-serif;
+  font-size: 16px;
 }
 </style>
