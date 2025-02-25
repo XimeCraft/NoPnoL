@@ -161,17 +161,29 @@ onMounted(() => {
 }
 
 .article-grid {
-  max-width: 1580px;
-  margin: 0 auto;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  padding: 0 20px;
-  margin-bottom: 50px;
+  padding: 0 50px;
+  margin: 0;
+}
+
+@media (max-width: 1200px) {
+  .article-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .article-grid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
 }
 
 .article-card {
-  width: 350px;
+  width: 100%;
   height: 480px;
   background-color: var(--searchbar-color);
   border-radius: 15px;
@@ -179,7 +191,7 @@ onMounted(() => {
 }
 
 .article-image {
-  width: 326px;
+  width: calc(100% - 24px);
   height: 228px;
   margin: 12px;
 }

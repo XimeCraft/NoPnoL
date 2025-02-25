@@ -13,76 +13,27 @@ const handleCategorySelected = (categoryId) => {
 </script>
 
 <template>
-  <Header />
-  <Banner />
-  <CategoryList @category-selected="handleCategorySelected" />
-  <ArticleGrid :categoryId="selectedCategoryId" />
-  <footer class="footer">
-    <p>@2025 XimeCraft</p>
-  </footer>
+  <div class="app-container">
+    <Header />
+    <Banner />
+    <CategoryList @category-selected="handleCategorySelected" />
+    <ArticleGrid :categoryId="selectedCategoryId" />
+    <footer class="footer">
+      <p>@2025 XimeCraft</p>
+    </footer>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+<style>
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 :root {
@@ -114,10 +65,14 @@ nav a:first-of-type {
 }
 
 body {
+  margin: 0;
+  padding: 0;
   background-color: var(--bg-color);
   color: var(--primary-text);
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 .footer {
@@ -125,5 +80,6 @@ body {
   padding: 30px 0;
   font-family: 'Anta', sans-serif;
   font-size: 16px;
+  width: 100%;
 }
 </style>
