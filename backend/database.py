@@ -8,13 +8,13 @@ SQLALCHEMY_DATABASE_URL = "sqlite:///./nopnol.db"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL,
-    connect_args={"check_same_thread": False}  # 仅用于SQLite
+    connect_args={"check_same_thread": False}  # SQLite
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
-# 依赖项
+# Dependency
 def get_db():
     db = SessionLocal()
     try:

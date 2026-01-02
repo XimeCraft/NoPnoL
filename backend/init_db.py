@@ -9,12 +9,20 @@ def init_db():
 def init_data():
     db = SessionLocal()
     try:
+        # 清空现有数据
+        print("Clearing existing data...")
+        db.query(Article).delete()
+        db.query(Tag).delete()
+        db.query(Category).delete()
+        db.query(Author).delete()
+        db.commit()
+
         # Categories
         categories = [
-            Category(name="Technology", image_url="/static/img/categories/category1.jpg"),
-            Category(name="Design", image_url="/static/img/categories/category1.jpg"),
-            Category(name="Development", image_url="/static/img/categories/category1.jpg"),
-            Category(name="AI", image_url="/static/img/categories/category1.jpg")
+            Category(name="Technology", image_url="/static/img/categories/Technology.png"),
+            Category(name="Design", image_url="/static/img/categories/Design.png"),
+            Category(name="Development", image_url="/static/img/categories/Development.png"),
+            Category(name="AI", image_url="/static/img/categories/AI.jpg")
         ]
         db.add_all(categories)
         db.commit()
@@ -43,7 +51,7 @@ def init_data():
         # Articles - Creating 15 sample articles
         articles = [
             Article(
-                title="Getting Started with FastAPI",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="FastAPI is a modern web framework for building APIs with Python...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=1,
@@ -51,7 +59,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="Modern Web Design Principles",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="In today's digital landscape, web design plays a crucial role...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=2,
@@ -59,7 +67,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="Building Scalable APIs with Python",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="Learn how to build scalable and maintainable APIs using Python best practices...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=1,
@@ -67,7 +75,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="Understanding Machine Learning Bias",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="Exploring the challenges and implications of bias in ML models...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=4,
@@ -75,7 +83,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="Frontend Development Best Practices",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="A comprehensive guide to modern frontend development techniques...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=3,
@@ -83,7 +91,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="The Future of AI Ethics",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="Discussing the ethical implications and future of artificial intelligence...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=4,
@@ -91,7 +99,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="Responsive Design Patterns",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="Creating beautiful, responsive interfaces that work on all devices...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=2,
@@ -99,7 +107,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="Database Optimization Techniques",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="Improving database performance with proven optimization strategies...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=1,
@@ -107,7 +115,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="Neural Networks Explained",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="A beginner-friendly introduction to neural networks and deep learning...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=4,
@@ -115,7 +123,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="CSS Grid Layout Mastery",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="Master CSS Grid and create complex layouts with ease...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=2,
@@ -123,7 +131,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="API Security Best Practices",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="Protecting your APIs from common security vulnerabilities...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=1,
@@ -131,7 +139,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="Vue.js Component Design",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="Building reusable and maintainable Vue.js components...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=3,
@@ -139,7 +147,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="Fairness in Algorithmic Decision Making",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="Examining fairness metrics and their implications in AI systems...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=4,
@@ -147,7 +155,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="Microservices Architecture Guide",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="Designing and implementing microservices-based applications...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=3,
@@ -155,7 +163,7 @@ def init_data():
                 publish_date=datetime.now()
             ),
             Article(
-                title="Color Theory for UI Design",
+                title="AI is a Mirror: Machine Learning Learns the Human Bias",
                 content="Understanding color psychology and creating harmonious color schemes...",
                 image_url="/static/img/articles/a1.jpg",
                 category_id=2,
