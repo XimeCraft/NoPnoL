@@ -78,18 +78,15 @@ body {
 .footer {
   position: relative;
   text-align: center;
-  padding: 100px 0;
+  padding: 200px 0 100px 0;
   font-family: 'Anta', sans-serif;
   font-size: 16px;
   width: 100%;
   min-height: 400px;
-  background-image: url('http://localhost:8000/static/img/bg.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  z-index: 1;
 }
 
 .footer p {

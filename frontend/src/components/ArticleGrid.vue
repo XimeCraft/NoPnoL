@@ -14,13 +14,15 @@
     </section>
 
     <main class="article-grid">
-      <article v-for="article in articles" 
-               :key="article.id" 
+      <article v-for="article in articles"
+               :key="article.id"
                class="article-card">
         <div class="article-image">
           <img :src="getImageUrl(article.image_url)" alt="Article">
         </div>
         <div class="article-content">
+          <time class="publish-date">{{ formatDate(article.publish_date) }}</time>
+          <h3 class="article-title">{{ article.title }}</h3>
           <div class="article-author">
             <img :src="getImageUrl(article.author.avatar_url)" :alt="article.author.name" class="author-avatar">
             <div class="author-info">
@@ -28,10 +30,8 @@
               <span class="author-profession">{{ article.author.profession }}</span>
             </div>
           </div>
-          <time class="publish-date">{{ formatDate(article.publish_date) }}</time>
-          <h3 class="article-title">{{ article.title }}</h3>
           <div class="article-tags">
-            <span v-for="(tag, index) in article.tags" 
+            <span v-for="(tag, index) in article.tags"
                   :key="tag"
                   class="tag"
                   :class="'tag-' + ((index % 3) + 1)">
@@ -74,7 +74,8 @@ const filters = [
 ]
 
 const getImageUrl = (path) => {
-  return `${API_BASE_URL}/${path}`
+  if (!path) return ''
+  return `${API_BASE_URL}${path.startsWith('/') ? path : '/' + path}`
 }
 
 const formatDate = (dateString) => {
@@ -132,8 +133,11 @@ onMounted(() => {
 .filters {
   display: flex;
   justify-content: flex-end;
-  padding: 0 120px;
+  padding: 0 80px;
   margin-bottom: 50px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .filter-container {
@@ -162,11 +166,15 @@ onMounted(() => {
 
 .article-grid {
   width: 100%;
+  max-width: 1400px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   padding: 0 50px;
-  margin: 0;
+  margin: 0 auto;
+  justify-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 1200px) {
@@ -188,12 +196,15 @@ onMounted(() => {
   background-color: var(--searchbar-color);
   border-radius: 15px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .article-image {
   width: calc(100% - 24px);
-  height: 228px;
-  margin: 12px;
+  height: 200px;
+  margin: 12px 12px 0 12px;
+  flex-shrink: 0;
 }
 
 .article-image img {
@@ -204,19 +215,22 @@ onMounted(() => {
 }
 
 .article-content {
-  padding: 20px;
+  padding: 12px 20px 15px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
 }
 
 .article-author {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 15px;
+  gap: 12px;
 }
 
 .author-avatar {
-  width: 67px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 10px;
   object-fit: cover;
 }
@@ -243,18 +257,18 @@ onMounted(() => {
 
 .publish-date {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--selected-filter);
-  margin-bottom: 10px;
   display: block;
 }
 
 .article-title {
   font-family: 'Inter', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 20px;
+  line-height: 1.3;
+  margin: 0;
 }
 
 .article-tags {
@@ -277,19 +291,34 @@ onMounted(() => {
 
 .load-more {
   display: block;
-  margin: 0 auto 50px;
-  padding: 15px 40px;
+  margin: 80px auto 50px;
+  padding: 18px 50px;
   font-family: 'Anta', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   color: var(--primary-text);
-  background: var(--button-gradient);
-  border: none;
-  border-radius: 25px;
+  background: var(--bg-color);
+  border: 2px solid transparent;
+  border-radius: 30px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.load-more::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(90deg, #FF1CF7, #796EFF, #40BBFD);
+  border-radius: 30px;
+  z-index: -1;
 }
 
 .load-more:hover {
-  transform: scale(1.05);
+  background: linear-gradient(90deg, #FF1CF7, #796EFF, #40BBFD);
+  border: none;
 }
 </style> 

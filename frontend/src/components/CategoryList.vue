@@ -4,7 +4,7 @@
     <button class="category-nav prev" @click="scrollCategories('prev')">
       <span class="arrow-left"></span>
     </button>
-    <div class="category-container">
+    <div class="category-container" ref="containerRef">
       <div v-for="category in categories" 
            :key="category.id" 
            class="category"
@@ -24,6 +24,8 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
+const emit = defineEmits(['category-selected'])
+
 const categories = ref([])
 const selectedCategoryId = ref(null)
 const containerRef = ref(null)
@@ -31,7 +33,8 @@ const containerRef = ref(null)
 const API_BASE_URL = 'http://localhost:8000'
 
 const getImageUrl = (path) => {
-  return `${API_BASE_URL}/${path}`
+  if (!path) return ''
+  return `${API_BASE_URL}${path.startsWith('/') ? path : '/' + path}`
 }
 
 const fetchCategories = async () => {
@@ -50,12 +53,15 @@ const selectCategory = (category) => {
 }
 
 const scrollCategories = (direction) => {
-  const container = containerRef.value
-  if (!container) return
-  
-  const scrollAmount = 200
+  const container = document.querySelector('.category-container')
+  if (!container) {
+    console.error('Category container not found')
+    return
+  }
+
+  const scrollAmount = 300
   const scrollOffset = direction === 'prev' ? -scrollAmount : scrollAmount
-  
+
   container.scrollBy({
     left: scrollOffset,
     behavior: 'smooth'
@@ -73,8 +79,11 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 30px;
+  padding: 0 120px 0 80px;
   margin-bottom: 50px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .category-container {
@@ -146,11 +155,11 @@ onMounted(() => {
 }
 
 .category-nav.prev {
-  left: 20px;
+  left: 0px;
 }
 
 .category-nav.next {
-  right: 20px;
+  right: 30px;
 }
 
 .arrow-left, .arrow-right {

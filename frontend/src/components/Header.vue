@@ -10,7 +10,10 @@
     <div class="search-container">
       <input type="search" class="search-bar" placeholder="Search...">
     </div>
-    <button class="login-btn">Login</button>
+    <div class="auth-buttons">
+      <button class="signup-btn">Sign up</button>
+      <button class="login-btn">Login</button>
+    </div>
   </header>
 </template>
 
@@ -56,11 +59,11 @@
 .search-container {
   flex-grow: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .search-bar {
-  width: 300px;
+  width: 450px;
   padding: 10px 20px;
   border-radius: 25px;
   border: none;
@@ -69,12 +72,18 @@
   font-family: 'Inter', sans-serif;
 }
 
+.auth-buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.signup-btn,
 .login-btn {
   padding: 10px 20px;
-  margin-right: 30px;
   border: none;
-  border-radius: 20px;
-  background-color: var(--searchbar-color);
+  background: transparent;
   color: var(--primary-text);
   font-family: 'Inter', sans-serif;
   font-weight: 600;
