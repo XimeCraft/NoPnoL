@@ -1,4 +1,4 @@
-# NoPnoL - No Prejudice, No Label
+# NoPnoL - No Prejudice No Label
 
 ## Introduction
 
@@ -6,22 +6,47 @@ NoPnoL aims to address the inherent bias in machine learning models that often e
 
 Although finding the perfect balance between these two goals remains challenging, I believe it's crucial to at least make visible what we might be sacrificing in pursuit of model accuracy.
 
-## Tech Stack
 
-### Backend
-- Python 3.8+
-- FastAPI
-- SQLAlchemy (ORM)
-- PostgreSQL
-- Pydantic
-- Python-jose (JWT)
-- Passlib
-- Alembic (Database migrations)
+## Technical Overview
 
-### Frontend
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Fetch API
+### Frontend (Vue.js)
+- Vue 3 with Composition API
+- Vite for build tooling
+- Responsive design with modern CSS
+- Component-based architecture
+- Axios for API communication
 
-## Project Structure
+### Backend (FastAPI)
+- FastAPI framework
+- SQLAlchemy ORM
+- SQLite database
+- RESTful API design
+- Static file serving
+
+### Development
+```bash
+# Backend
+cd backend
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+
+# Frontend
+cd frontend
+npm install
+npm run dev
+```
+
+### API Endpoints
+- `/api/categories` - Get all categories
+- `/api/articles` - Get articles with filtering and pagination
+- `/api/articles/{id}` - Get specific article details
+
+### Database Schema
+- Categories
+- Articles
+- Authors
+- Tags
+- Article-Tag relations
+
