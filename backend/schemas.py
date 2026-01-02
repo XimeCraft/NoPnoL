@@ -39,6 +39,7 @@ class ArticleResponse(BaseModel):
     publish_date: datetime
     author: Author
     category: Category
+    image_url: Optional[str] = None
     tags: List[str]
 
     class Config:

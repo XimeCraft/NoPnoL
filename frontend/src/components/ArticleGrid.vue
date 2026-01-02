@@ -74,7 +74,7 @@ const filters = [
 ]
 
 const getImageUrl = (path) => {
-  return `${API_BASE_URL}${path}`
+  return `${API_BASE_URL}/${path}`
 }
 
 const formatDate = (dateString) => {

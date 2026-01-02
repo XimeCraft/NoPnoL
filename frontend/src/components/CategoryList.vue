@@ -31,7 +31,7 @@ const containerRef = ref(null)
 const API_BASE_URL = 'http://localhost:8000'
 
 const getImageUrl = (path) => {
-  return `${API_BASE_URL}${path}`
+  return `${API_BASE_URL}/${path}`
 }
 
 const fetchCategories = async () => {

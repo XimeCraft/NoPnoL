@@ -12,7 +12,7 @@
   position: relative;
   width: 100%;
   padding-bottom: 44.2%; 
-  background-image: url('backend/static/img/banner.png');
+  background-image: url('http://localhost:8000/static/img/banner.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

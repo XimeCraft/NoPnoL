@@ -8,15 +8,14 @@ class ArticleCRUD:
     @staticmethod
     def get_articles(db: Session, page_number: int = 1, limit: int = 9, category_id: Optional[int] = None) -> List[models.Article]:
         """Get all articles with pagination and category filtering"""
-        query = db.query(models.Article)        
-
+        query = db.query(models.Article)
+        
         if category_id:
             query = query.filter(models.Article.category_id == category_id)
         skip = (page_number - 1) * limit
         articles = query.order_by(desc(models.Article.publish_date)).offset(skip).limit(limit).all()
         
         return [article.to_dict() for article in articles]
-
 
     @staticmethod
     def get_article(db: Session, article_id: int) -> Optional[models.Article]:

@@ -12,7 +12,7 @@ app = FastAPI(title="NoPnoL API")
 # CORS配置
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5500"],  # Frontend server address
+    allow_origins=["http://localhost:5500", "http://localhost:3000"],  # Frontend server address
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
