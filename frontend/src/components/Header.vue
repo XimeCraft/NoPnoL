@@ -71,6 +71,7 @@
 
 .login-btn {
   padding: 10px 20px;
+  margin-right: 30px;
   border: none;
   border-radius: 20px;
   background-color: var(--searchbar-color);

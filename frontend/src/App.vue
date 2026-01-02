@@ -42,7 +42,7 @@ const handleCategorySelected = (categoryId) => {
   --highlight-color: #87af20;
   --primary-text: #ffffff;
   --searchbar-color: #312f2f;
-  --selected-filter: #01e6b3;
+  --selected-filter: #009970;
 
   /* Category Colors */
   --category-bg-selected: #87af20;
@@ -76,10 +76,25 @@ body {
 }
 
 .footer {
+  position: relative;
   text-align: center;
-  padding: 30px 0;
+  padding: 100px 0;
   font-family: 'Anta', sans-serif;
   font-size: 16px;
   width: 100%;
+  min-height: 400px;
+  background-image: url('http://localhost:8000/static/img/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer p {
+  position: relative;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 </style>
