@@ -14,8 +14,9 @@
     </section>
 
     <main class="article-grid">
-      <article v-for="article in articles"
+      <router-link v-for="article in articles"
                :key="article.id"
+               :to="`/article/${article.id}`"
                class="article-card">
         <div class="article-image">
           <img :src="getImageUrl(article.image_url)" alt="Article">
@@ -39,7 +40,7 @@
             </span>
           </div>
         </div>
-      </article>
+      </router-link>
     </main>
 
     <button v-if="hasMore" 
@@ -198,6 +199,14 @@ onMounted(() => {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(135, 175, 32, 0.3);
 }
 
 .article-image {
