@@ -1,33 +1,15 @@
 <script setup>
-import { ref } from 'vue'
-import Header from './components/Header.vue'
-import Banner from './components/Banner.vue'
-import CategoryList from './components/CategoryList.vue'
-import ArticleGrid from './components/ArticleGrid.vue'
-
-const selectedCategoryId = ref(null)
-
-const handleCategorySelected = (categoryId) => {
-  selectedCategoryId.value = categoryId
-}
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
   <div class="app-container">
-    <Header />
-    <Banner />
-    <CategoryList @category-selected="handleCategorySelected" />
-    <ArticleGrid :categoryId="selectedCategoryId" />
-    <footer class="footer">
-      <p>@2025 XimeCraft</p>
-    </footer>
+    <RouterView />
   </div>
 </template>
 
 <style>
 .app-container {
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
   width: 100vw;
   max-width: 100%;
@@ -42,7 +24,7 @@ const handleCategorySelected = (categoryId) => {
   --highlight-color: #87af20;
   --primary-text: #ffffff;
   --searchbar-color: #312f2f;
-  --selected-filter: #01e6b3;
+  --selected-filter: #009970;
 
   /* Category Colors */
   --category-bg-selected: #87af20;
@@ -75,11 +57,4 @@ body {
   overflow-x: hidden;
 }
 
-.footer {
-  text-align: center;
-  padding: 30px 0;
-  font-family: 'Anta', sans-serif;
-  font-size: 16px;
-  width: 100%;
-}
 </style>
